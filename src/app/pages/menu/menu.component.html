@@ -1,0 +1,40 @@
+<div style="padding: 2rem; font-family: sans-serif;">
+  <!-- Заголовок со статистикой -->
+  <div style="margin-bottom: 2rem; padding: 1rem; background: #f5f5f5; border-radius: 8px;">
+    <h2 style="margin: 0 0 0.5rem 0;">Раздел: {{ selectedType.type }}</h2>
+    <p style="margin: 0.25rem 0;">Выбрано пунктов: {{ getSelectedCount() }}</p>
+    <p style="margin: 0.25rem 0;">Общее значение: {{ getSelectedTotal() }}</p>
+  </div>
+
+  <!-- Кнопки выбора типа меню -->
+  <div style="margin-bottom: 1.5rem;">
+    @for (type of menuData; track type.type) {
+      <button 
+        (click)="selectType(type)"
+        style="margin-right: 0.5rem; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;"
+        [style.background]="selectedType.type === type.type ? '#007bff' : '#e0e0e0'"
+        [style.color]="selectedType.type === type.type ? 'white' : 'black'">
+        {{ type.type }}
+      </button>
+    }
+  </div>
+
+  <!-- Чекбоксы -->
+  <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem;">
+    @for (item of selectedType.items; track item.name) {
+      <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+        <input 
+          type="checkbox" 
+          [checked]="item.checked"
+          (change)="toggleItem(item)"
+          style="width: 1.2rem; height: 1.2rem; cursor: pointer;">
+        <span style="font-size: 1.1rem;">{{ item.name }} — Value: {{ item.value }}</span>
+      </label>
+    }
+  </div>
+
+  <!-- Ссылка назад -->
+  <div>
+    <a routerLink="/" style="color: #007bff; text-decoration: underline;">← Вернуться на главную</a>
+  </div>
+</div>
