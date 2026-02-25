@@ -15,7 +15,6 @@
 - standalone компоненты
 - новый синтаксис @for
 
-Как запустить
-
+Как запустить:
 npm install --legacy-peer-deps
 npm start
