@@ -16,5 +16,7 @@
 - новый синтаксис @for
 
 Как запустить:
+
 npm install --legacy-peer-deps
+
 npm start
